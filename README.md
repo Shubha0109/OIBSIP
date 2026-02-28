@@ -1,5 +1,9 @@
 # To-Do App – Oasis Infobyte Internship
 
+## 🌐 Live Project
+🔗 [Click here to view the Live To-Do App](https://shubha0109.github.io/OIBSIP/)
+
+
 [![🎬 Watch Demo](https://img.shields.io/badge/🎬%20Watch%20Demo-blue?style=for-the-badge)](https://drive.google.com/file/d/1KeSBdoanPeylv7pPj1NNvFusYd7wf08z/view?usp=sharing)
 
 ## Overview
@@ -28,7 +32,7 @@ It demonstrates HTML, CSS, and JavaScript skills, along with DOM manipulation an
 3. Click **✏** to edit a task, **✔** to mark as completed, **❌** to delete  
 4. Tasks remain saved after refreshing the page  
 
-## Author
+## 👩‍💻 Developed by
 Shubhangi Tulashiram Arde  
 
 ## GitHub Repository

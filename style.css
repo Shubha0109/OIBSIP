@@ -1,127 +1,25 @@
-/* Body & overall layout */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #9face6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial;
     margin: 0;
-}
-
-/* Container card */
-.container {
-    background: white;
-    padding: 35px 30px;
-    border-radius: 15px;
-    width: 450px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
-    transition: all 0.3s ease;
 }
 
-.container:hover {
-    transform: scale(1.02);
+header {
+    background-color: brown;
+    color: white;
+    padding: 20px;
 }
 
-/* Heading */
-h1 {
-    margin-bottom: 20px;
-    color: #333;
+section {
+    padding: 20px;
 }
 
-/* Input box styling */
-input {
-    padding: 12px;
-    width: 65%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 16px;
+.menu {
+    background-color: #f2f2f2;
 }
 
-input:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px #4CAF50;
-}
-
-/* Add button styling */
-button {
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-button:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
-}
-
-/* Section headings */
-h2 {
-    margin-top: 20px;
-    color: #333;
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 5px;
-}
-
-/* Task lists */
-ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-}
-
-/* Task item styling */
-li {
+footer {
+    background-color: black;
+    color: white;
     padding: 10px;
-    margin: 5px 0;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-/* Pending tasks */
-#pendingList li {
-    background: #e3f2fd; /* Light blue */
-}
-
-/* Completed tasks */
-#completedList li {
-    background: #c8e6c9; /* Light green */
-    text-decoration: line-through;
-    color: #555;
-}
-
-/* Buttons inside tasks */
-li button {
-    margin-left: 5px;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* Button colors */
-li button.edit {
-    background-color: #ffb74d; /* Orange */
-    color: white;
-}
-
-li button.complete {
-    background-color: #81c784; /* Green */
-    color: white;
-}
-
-li button.delete {
-    background-color: #e57373; /* Red */
-    color: white;
 }

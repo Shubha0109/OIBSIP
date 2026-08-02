@@ -1,92 +1,108 @@
 document.addEventListener("DOMContentLoaded", loadTasks);
 
-function addTask() {
-    let input = document.getElementById("taskInput");
-    let taskText = input.value.trim();
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    if (taskText === "") {
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTask() {
+    const input = document.getElementById("taskInput");
+    const text = input.value.trim();
+
+    if (text === "") {
         alert("Please enter a task!");
         return;
     }
 
-    createTaskElement(taskText, false);
-    saveTask(taskText, false);
+    tasks.push({
+        id: Date.now(),
+        text: text,
+        completed: false
+    });
 
     input.value = "";
-}
 
-function createTaskElement(taskText, isCompleted) {
-    let li = document.createElement("li");
-    li.innerHTML = `
-        ${taskText}
-        <button class="edit" onclick="editTask(this)">✏</button>
-        <button class="complete" onclick="toggleComplete(this)">✔</button>
-        <button class="delete" onclick="deleteTask(this)">❌</button>
-    `;
-
-    if (isCompleted) {
-        document.getElementById("completedList").appendChild(li);
-    } else {
-        document.getElementById("pendingList").appendChild(li);
-    }
-}
-
-// Delete task
-function deleteTask(button) {
-    let li = button.parentElement;
-    removeTask(li.firstChild.textContent.trim());
-    li.remove();
-}
-
-// Edit task
-function editTask(button) {
-    let li = button.parentElement;
-    let newTask = prompt("Edit Task:", li.firstChild.textContent.trim());
-    if (newTask) {
-        updateTask(li.firstChild.textContent.trim(), newTask);
-        li.firstChild.textContent = newTask;
-    }
-}
-
-// Toggle Complete / Pending
-function toggleComplete(button) {
-    let li = button.parentElement;
-    let isCompleted = li.parentElement.id === "pendingList";
-
-    if (isCompleted) {
-        document.getElementById("completedList").appendChild(li);
-    } else {
-        document.getElementById("pendingList").appendChild(li);
-    }
-
-    updateTask(li.firstChild.textContent.trim(), li.firstChild.textContent.trim(), isCompleted);
-}
-
-// LocalStorage Functions
-function saveTask(taskText, isCompleted) {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push({ text: taskText, completed: isCompleted });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    saveTasks();
+    loadTasks();
 }
 
 function loadTasks() {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(task => createTaskElement(task.text, task.completed));
-}
 
-function removeTask(taskText) {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks = tasks.filter(task => task.text !== taskText);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+    const pendingList = document.getElementById("pendingList");
+    const completedList = document.getElementById("completedList");
 
-function updateTask(oldText, newText, completed = false) {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks = tasks.map(task => {
-        if (task.text === oldText) {
-            return { text: newText, completed: completed };
+    pendingList.innerHTML = "";
+    completedList.innerHTML = "";
+
+    tasks.forEach(task => {
+
+        const li = document.createElement("li");
+
+        if (task.completed) {
+            li.classList.add("completed");
         }
-        return task;
+
+        li.innerHTML = `
+            <span class="task-text">${task.text}</span>
+
+            <div class="buttons">
+                <button class="edit" onclick="editTask(${task.id})">✏</button>
+
+                <button class="complete" onclick="toggleTask(${task.id})">
+                    ${task.completed ? "↩" : "✔"}
+                </button>
+
+                <button class="delete" onclick="deleteTask(${task.id})">❌</button>
+            </div>
+        `;
+
+        if (task.completed) {
+            completedList.appendChild(li);
+        } else {
+            pendingList.appendChild(li);
+        }
+
     });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+}
+
+function editTask(id) {
+
+    const task = tasks.find(t => t.id === id);
+
+    const updated = prompt("Edit Task", task.text);
+
+    if (updated === null) return;
+
+    if (updated.trim() === "") {
+        alert("Task cannot be empty.");
+        return;
+    }
+
+    task.text = updated.trim();
+
+    saveTasks();
+
+    loadTasks();
+}
+
+function deleteTask(id) {
+
+    tasks = tasks.filter(task => task.id !== id);
+
+    saveTasks();
+
+    loadTasks();
+}
+
+function toggleTask(id) {
+
+    const task = tasks.find(task => task.id === id);
+
+    task.completed = !task.completed;
+
+    saveTasks();
+
+    loadTasks();
 }

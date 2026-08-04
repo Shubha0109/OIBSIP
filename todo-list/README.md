@@ -4,7 +4,7 @@
 🔗 [Click here to view the Live To-Do App](https://shubha0109.github.io/OIBSIP/?utm_source=chatgpt.com)
 
 
-[![🎬 Watch Demo](https://img.shields.io/badge/🎬%20Watch%20Demo-blue?style=for-the-badge)](https://drive.google.com/file/d/1KeSBdoanPeylv7pPj1NNvFusYd7wf08z/view?usp=sharing)
+[![🎬 Watch Demo](https://lnkd.in/p/dmQyzsQZ)
 
 ## Overview
 This is a professional To-Do App created for the Oasis Infobyte Web Development & Design Internship (OIB-SIP).  

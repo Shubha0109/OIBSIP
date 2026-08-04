@@ -6,7 +6,9 @@
 
 ## 🎥 Demo Video
 
-[🎬 Watch Demo on LinkedIn](https://www.linkedin.com/posts/...)
+## 🎥 Demo Video
+
+👉 [Watch Demo on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7432719806900051969/)
 
 ## Overview
 This is a professional To-Do App created for the Oasis Infobyte Web Development & Design Internship (OIB-SIP).  
